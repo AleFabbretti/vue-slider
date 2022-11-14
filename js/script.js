@@ -34,13 +34,13 @@ createApp({
   methods: {
     prevImage() {
         if (this.active === 0) {
-            this.active === this.slides.length-1;
+            this.active === this.slides.length -1;
         }else {
             this.active--;
         }
     },
     nextImage() {
-        if(this.active === this.slides.length-1) {
+        if(this.active === this.slides.length -1) {
             this.active=0;
         }else{
             this.active++;
@@ -49,5 +49,10 @@ createApp({
     changeImage(index) {
         this.active = index;
     }
-  }
+  },
+  mounted() {
+    setInterval(() => {
+       this.nextImage(); 
+    }, 3000);
+},
 }).mount('#app')
