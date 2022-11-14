@@ -1,9 +1,11 @@
+`use strict`
+
 const { createApp } = Vue
 
 createApp({
   data() {
     return {
-        tabIndex : 0,
+        active : 0,
         slides : [
             {
                 image: 'img/01.webp',
@@ -29,6 +31,23 @@ createApp({
             ],
     };
   },
-
-
+  methods: {
+    prevImage() {
+        if (this.active === 0) {
+            this.active === this.slides.length-1;
+        }else {
+            this.active--;
+        }
+    },
+    nextImage() {
+        if(this.active === this.slides.length-1) {
+            this.active=0;
+        }else{
+            this.active++;
+        }
+    }, 
+    changeImage(index) {
+        this.active = index;
+    }
+  }
 }).mount('#app')
